@@ -3,19 +3,27 @@
 	src: url("./KonSystem-YB8j.ttf") format("truetype");
 }
 
+a {
+    all: unset;
+}
+
 #konami {
     position: fixed;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
     background-color: #AD0012;
     color: white;
     height: 40%;
     width: 40%;
     left: 27.5%;
     top: 25%;
-    box-shadow: 0px 0px 10px 5px #000000;
+    box-shadow: 0px 0px 8px 2px #000000;
     padding: 30px;
     font-family: konami;
     font-size: 30px;
     transition: opacity 0.5s ease-in;
+    border-radius: 5px;
 }
 
 #konami-top {
@@ -26,15 +34,39 @@
     margin: 2%;
 }
 
-#konami-bottom {
-    position: absolute;
-    bottom: 10%;
-}
-
 #status {
     transition: opacity 0.3s ease-in;
 }
 
 #interim {
     color: #BBB;
+}
+
+#konami-bottom {
+    display: flex;
+}
+
+.icon-container {
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-container:hover {
+    background-color: #920413;
+}
+
+.material-symbols-sharp { 
+    user-select: none;
+    margin: 8px;
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    font-size: 30px;
+}
+
+.no-fill {
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
 }

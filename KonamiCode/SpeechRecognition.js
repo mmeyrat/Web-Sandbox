@@ -1,7 +1,8 @@
-const code = ["nord", "nord", "sud", "sud", "gauche", "droite", "gauche", "droite", "b", "a"];
+const code = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"];
 
-// String for the Final Transcript
 let final_transcript = "";
+let isListening = false;
+let isFrench = true;
 
 if ("webkitSpeechRecognition" in window) {
     // Initialize webkitSpeechRecognition
@@ -11,7 +12,7 @@ if ("webkitSpeechRecognition" in window) {
     // Set the properties for the Speech Recognition object
     speechRecognition.continuous = true;
     speechRecognition.interimResults = true;
-    speechRecognition.lang = 'en-EN';
+    speechRecognition.lang = 'fr-FR';
   
     // Callback Function for the onStart Event
     speechRecognition.onstart = () => {
@@ -50,15 +51,16 @@ if ("webkitSpeechRecognition" in window) {
       checkCode(final_transcript);
     };
   
-    // Set the onClick property of the start button
-    document.querySelector("#start").onclick = () => {
-      // Start the Speech Recognition
-      speechRecognition.start();
-    };
-    // Set the onClick property of the stop button
-    document.querySelector("#stop").onclick = () => {
-      // Stop the Speech Recognition
-      speechRecognition.stop();
+    document.querySelector("#listen").onclick = (event) => {
+      if (isListening) {
+        speechRecognition.stop();
+        isListening = false;
+        event.srcElement.textContent = "mic_off"
+      } else {
+        speechRecognition.start();
+        isListening = true;
+        event.srcElement.textContent = "mic"
+      }
     };
 
     document.querySelector("#delete").onclick = () => {
@@ -70,6 +72,19 @@ if ("webkitSpeechRecognition" in window) {
       final_transcript = "";
       document.querySelector("#final").innerHTML = final_transcript;
     };
+
+    document.querySelector("#translate").onclick = (event) => {
+      if (isFrench) {
+        speechRecognition.lang = 'en-US';
+        isFrench = false;
+        event.srcElement.textContent = "language_us"
+      } else {
+        speechRecognition.lang = 'en-FR';
+        isFrench = true;
+        event.srcElement.textContent = "language_french"
+      }
+    };
+
 } else {
   console.log("Speech Recognition Not Available");
 }
@@ -77,19 +92,19 @@ if ("webkitSpeechRecognition" in window) {
 document.onkeydown = (e) => {
   if (document.querySelector("#konami").style.opacity == "1") {
     if (e.keyCode == '37') {
-      final_transcript += " gauche";
+      final_transcript += " left";
     }
   
     if (e.keyCode == '38') {
-      final_transcript += " nord";
+      final_transcript += " up";
     }
   
     if (e.keyCode == '39') {
-      final_transcript += " droite";    
+      final_transcript += "  right";    
     }
   
     if (e.keyCode == '40') {
-      final_transcript += " sud";    
+      final_transcript += " down";    
     }
   
     if (e.keyCode == '65') {
