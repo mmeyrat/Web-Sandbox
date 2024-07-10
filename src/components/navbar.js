@@ -1,18 +1,26 @@
 import React from 'react';
+import './Navbar.css';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 
-class Navbar extends React.Component {
-   render() {
-      return (
-         <div>
-            <ul>
-            <li>Earth3D</li>
-            <li>KonamiCode</li>
-            </ul>
-            {this.props.children}
-         </div>
-      )
-   }
+export default function Navbar() {
+	const list = React.useRef(null);
+
+	function select(e) {
+		if (list) {
+			for (const child of list.current.children) {
+				child.id = "";
+			}
+			e.target.id = "selected";
+		}
+	}
+
+	return (
+		<div id="navbar">
+			<ul ref={list}>
+				<li onClick={select} id="selected">Earth 3D</li>
+				<li onClick={select}>Konami Code</li>
+			</ul>
+		</div>
+	)
 }
-export default Navbar;

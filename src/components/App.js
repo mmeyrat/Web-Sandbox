@@ -1,5 +1,4 @@
 import logo from './logo.svg';
-import './App.css';
 import Navbar from './Navbar.js'
 import Konami from './Konami'
 
@@ -8,7 +7,7 @@ function App() {
     <div className="App">
       <div className="App-header">
         
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
+        {/*<img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -19,10 +18,11 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a>*/}
       </div>
       <div>
-        <Konami />
+        {/*<Konami />*/}
+        <Navbar />
       </div>
     </div>
   );
