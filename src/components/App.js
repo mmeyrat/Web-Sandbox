@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import './navbar.js'
+import Navbar from './Navbar.js'
+import Konami from './Konami'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="App-header">
+        
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,10 +20,10 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-      <body>
-        <navbar />
-      </body>
+      </div>
+      <div>
+        <Konami />
+      </div>
     </div>
   );
 }
