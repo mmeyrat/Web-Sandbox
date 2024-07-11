@@ -4,7 +4,7 @@ import Konami from './Konami';
 import Navbar from './Navbar';
 
 function App() {
-	const [selectValue, setSelectValue] = React.useState(0);
+	const [selectValue, setSelectValue] = React.useState(1);
 
 	const handleSelectValue = (value) => {
 		setSelectValue(value);

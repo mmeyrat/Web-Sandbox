@@ -72,3 +72,29 @@ a {
 .no-fill {
 	font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
 }
+
+.falling-image {
+    position: absolute;
+    top: -300px; /* Commence juste au-dessus de la vue */
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+		opacity: 1;
+        transform: translateY(-100px);
+    }
+
+    80% {
+		opacity: 1;
+    }
+
+    100% {
+		opacity: 0;
+        transform: translateY(100vh);
+    }
+}
+
+body {
+	overflow: hidden;
+}
