@@ -1,6 +1,7 @@
 import React from 'react';
-import Navbar from './Navbar.js'
-import Konami from './Konami'
+import Earth from './Earth';
+import Konami from './Konami';
+import Navbar from './Navbar';
 
 function App() {
 	const [selectValue, setSelectValue] = React.useState(0);
@@ -11,7 +12,7 @@ function App() {
 
 	return (
 		<div className="App">
-			{/*selectValue === 1 ? <Earth /> : null*/}
+			{selectValue === 0 ? <Earth /> : null}
 			{selectValue === 1 ? <Konami /> : null}
 			<Navbar onValueSend={handleSelectValue}/>
 		</div>
