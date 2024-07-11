@@ -1,13 +1,12 @@
-var code = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"];
+const code = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"];
 
-var final_transcript = "";
-var isListening = false;
-var isFrench = true;
+let final_transcript = "";
+let isListening = false;
+let isFrench = true;
 
 if ("webkitSpeechRecognition" in window) {
 	// Initialize webkitSpeechRecognition
 	let speechRecognition = new webkitSpeechRecognition();
-
 
 	// Set the properties for the Speech Recognition object
 	speechRecognition.continuous = true;

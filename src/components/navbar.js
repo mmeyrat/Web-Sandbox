@@ -1,16 +1,19 @@
 import React from 'react';
 import './Navbar.css';
-import ReactDOM from 'react-dom';
-import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 
-export default function Navbar() {
+export default function Navbar({onValueSend}) {
 	const list = React.useRef(null);
 
 	function select(e) {
 		if (list) {
-			for (const child of list.current.children) {
+			const childs = list.current.children;
+			const valueToSend = Array.prototype.indexOf.call(childs, e.target);
+			onValueSend(valueToSend);
+
+			for (const child of childs) {
 				child.id = "";
 			}
+
 			e.target.id = "selected";
 		}
 	}
