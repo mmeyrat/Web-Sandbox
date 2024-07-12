@@ -37,18 +37,18 @@ export default function Konami() {
 	return (
 		<div>
 		<div className="loader">
-			<span className="falling-image"><img src="/images/ko0.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko1.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko2.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko3.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko4.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko5.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko6.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko7.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko8.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko9.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko10.jpg"></img></span>
-			<span className="falling-image"><img src="/images/ko11.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko0.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko1.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko2.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko3.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko4.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko5.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko6.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko7.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko8.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko9.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko10.jpg"></img></span>
+			<span className="falling-image"><img src="/images/KonamiCode/ko11.jpg"></img></span>
 		</div>
 			<div id="konami">
 				<div id="konami-top">
