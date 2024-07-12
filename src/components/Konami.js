@@ -11,45 +11,41 @@ export default function Konami() {
 			document.body.appendChild(script);
 		}
 
-			const images = document.querySelectorAll('.falling-image');
-			const numImages = images.length;
-			const sectionWidth = window.innerWidth / numImages;
-		
-			images.forEach((image, index) => {
+		document.querySelectorAll('.falling-image').forEach((image, index) => {
+			resetImage(image, index);
+		});
+	
+		function resetImage(image, index) {
+			// Positionner l'image dans une section spécifique pour éviter les chevauchements
+			image.style.left = Math.random() * window.innerWidth - 132 + 'px';
+	
+			// Définir une durée d'animation aléatoire entre 5 et 15 secondes
+			const duration = Math.random() * 20 + 5;
+			image.style.animationDuration = duration + 's';
+	
+			// Réinitialiser l'image une fois l'animation terminée
+			image.addEventListener('animationiteration', () => {
 				resetImage(image, index);
 			});
-		
-			function resetImage(image, index) {
-				// Positionner l'image dans une section spécifique pour éviter les chevauchements
-        image.style.left = Math.random() * window.innerWidth - 132 + 'px';
-		
-				// Définir une durée d'animation aléatoire entre 5 et 15 secondes
-				const duration = Math.random() * 20 + 5;
-				image.style.animationDuration = duration + 's';
-		
-				// Réinitialiser l'image une fois l'animation terminée
-				image.addEventListener('animationiteration', () => {
-					resetImage(image, index);
-				});
-			}
+		}
 	});
 
 	return (
 		<div>
-		<div className="loader">
-			<span className="falling-image"><img src="/images/KonamiCode/ko0.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko1.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko2.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko3.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko4.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko5.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko6.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko7.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko8.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko9.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko10.jpg"></img></span>
-			<span className="falling-image"><img src="/images/KonamiCode/ko11.jpg"></img></span>
-		</div>
+			<div className="loader">
+				<span className="falling-image"><img src="/images/KonamiCode/ko0.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko1.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko2.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko3.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko4.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko5.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko6.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko7.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko8.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko9.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko10.jpg" alt=""></img></span>
+				<span className="falling-image"><img src="/images/KonamiCode/ko11.jpg" alt=""></img></span>
+			</div>
 			<div id="konami">
 				<div id="konami-top">
 					<span id="final" className="text-light"></span>
