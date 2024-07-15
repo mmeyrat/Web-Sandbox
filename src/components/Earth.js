@@ -81,10 +81,17 @@ export default function Earth() {
 		}
 
 		update();
-	});
 
-	document.body.onmousedown = () => { document.getElementById("earth").style.cursor = "grabbing"; }
-	document.body.onmouseup = () => { document.getElementById("earth").style.cursor = "grab"; }
+		document.body.onmousedown = () => { 
+			if (document.getElementById("earth")) 
+				document.getElementById("earth").style.cursor = "grabbing"; 
+		}
+
+		document.body.onmouseup = () => { 
+			if (document.getElementById("earth")) 			
+				document.getElementById("earth").style.cursor = "grab";
+		}
+	});
 
 	return (
 		<div id="earth"></div>

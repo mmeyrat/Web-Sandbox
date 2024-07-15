@@ -10,9 +10,8 @@ export default function Navbar({onValueSend}) {
 			const valueToSend = Array.prototype.indexOf.call(childs, e.target);
 			onValueSend(valueToSend);
 
-			for (const child of childs) {
+			for (const child of childs)
 				child.id = "";
-			}
 
 			e.target.id = "selected";
 		}

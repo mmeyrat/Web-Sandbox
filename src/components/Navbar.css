@@ -9,6 +9,7 @@
 	font-size: 20px;
 	color: white;
 	box-shadow: 0 0 10px 0 #444;
+	transition: bottom 0.3s ease-in;
 }
 
 #navbar ul {
@@ -34,4 +35,33 @@
 
 #navbar li:not(#selected):hover {
 	background-color: #555;
+}
+
+@media screen and (max-width: 400px) {
+	#navbar {
+		width: 180px;
+		left: calc(50% - 90px);
+		bottom: 25px;
+	}
+
+    #navbar ul {
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	#navbar li:not(:first-child) {
+		margin-top: 10px;
+	}
+}
+
+@media screen and (max-height: 500px) {
+    #navbar {
+		bottom: 20px;
+    }
+}
+
+@media screen and (max-height: 200px) {
+    #navbar {
+        display: none;
+    }
 }
