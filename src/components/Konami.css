@@ -9,6 +9,10 @@ a {
 	all: unset;
 }
 
+:root {
+	--bg-color: #EEE;
+}
+
 #konami {
 	position: fixed;
 	display: flex;
@@ -16,12 +20,12 @@ a {
 	justify-content: space-between;
 	background-color: #AD0012;
 	color: white;
-	height: 40%;
 	width: 40%;
-	left: 27.5%;
-	top: 25%;
+	left: calc(30% - 30px);
+	top: calc(50% - 275px);
 	box-shadow: 0px 0px 8px 2px #000000;
 	padding: 30px;
+	padding-bottom: 15px;
 	font-family: konami;
 	font-size: 30px;
 	transition: opacity 0.5s ease-in;
@@ -32,7 +36,7 @@ a {
 	box-shadow: 0px 0px 10px 5px #920413;
 	background-color: #920413;
 	overflow-y: auto;
-	height: 60%;
+	height: 300px;
 	margin: 2%;
 }
 
@@ -46,6 +50,7 @@ a {
 
 #konami-bottom {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .icon-container {
@@ -73,28 +78,62 @@ a {
 	font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
 }
 
-.falling-image {
-    position: absolute;
-    top: -300px; /* Commence juste au-dessus de la vue */
-    animation: fall linear infinite;
-}
-
 @keyframes fall {
     0% {
 		opacity: 1;
-        transform: translateY(-100px);
+        transform: translateY(0px);
     }
 
-    80% {
+    90% {
 		opacity: 1;
     }
 
     100% {
 		opacity: 0;
-        transform: translateY(100vh);
+        transform: translateY(1000px);
     }
 }
 
+.falling-image {
+    position: absolute;
+    top: -300px;
+    animation: fall linear 5s infinite;
+	border-radius: 5px;
+}
+
+
 body {
+	background-color: var(--bg-color);
+}
+
+
+@media screen and (max-width: 1000px) {
+	#konami {
+		width: 70%;
+		left: calc(15% - 30px);
+	}
+
+	#konami-bottom {
+		margin-bottom: 4%;
+	}
+}
+
+@media screen and (max-height: 500px) {
+	#konami {
+		top: calc(50% - 150px);
+	}
+
+	#konami-top {
+		height: 100px;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: #222;
+	}
+}
+
+html {
 	overflow: hidden;
 }

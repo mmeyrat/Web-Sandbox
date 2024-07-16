@@ -13,6 +13,7 @@ if ("webkitSpeechRecognition" in window) {
 	speechRecognition.interimResults = true;
 	speechRecognition.lang = 'fr-FR';
 
+	/*
 	// Callback Function for the onStart Event
 	speechRecognition.onstart = () => {
 		// Show the Status Element
@@ -26,6 +27,7 @@ if ("webkitSpeechRecognition" in window) {
 		// Hide the Status Element
 		document.querySelector("#status").style.opacity = "0";
 	};
+	*/
 
 	speechRecognition.onresult = (event) => {
 		// Create the interim transcript string locally because we don't want it to persist like final transcript
