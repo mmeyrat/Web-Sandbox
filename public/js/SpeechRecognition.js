@@ -1,5 +1,7 @@
-const code = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"];
+const codeFr = ["haut", "haut", "bas", "bas", "gauche", "droite", "gauche", "droite", "b", "a"];
+const codeEn = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"];
 
+let code = codeFr;
 let final_transcript = "";
 let isListening = false;
 let isFrench = true;
@@ -13,22 +15,6 @@ if ("webkitSpeechRecognition" in window) {
 	speechRecognition.interimResults = true;
 	speechRecognition.lang = 'fr-FR';
 
-	/*
-	// Callback Function for the onStart Event
-	speechRecognition.onstart = () => {
-		// Show the Status Element
-		document.querySelector("#status").style.opacity = "1";
-	};
-	speechRecognition.onerror = () => {
-		// Hide the Status Element
-		document.querySelector("#status").style.opacity = "0";
-	};
-	speechRecognition.onend = () => {
-		// Hide the Status Element
-		document.querySelector("#status").style.opacity = "0";
-	};
-	*/
-
 	speechRecognition.onresult = (event) => {
 		// Create the interim transcript string locally because we don't want it to persist like final transcript
 		let interim_transcript = "";
@@ -38,11 +24,10 @@ if ("webkitSpeechRecognition" in window) {
 		// Loop through the results from the speech recognition object.
 		for (let i = event.resultIndex; i < event.results.length; ++i) {
 			// If the result item is Final, add it to Final Transcript, Else add it to Interim transcript
-			if (event.results[i].isFinal) {
+			if (event.results[i].isFinal)
 				final_transcript += event.results[i][0].transcript;
-			} else {
+			else 
 				interim_transcript += event.results[i][0].transcript;
-			}
 		}
 
 		// Set the Final transcript and Interim transcript.
@@ -56,11 +41,17 @@ if ("webkitSpeechRecognition" in window) {
 		if (isListening) {
 			speechRecognition.stop();
 			isListening = false;
-			event.srcElement.textContent = "mic_off"
+			if (event.srcElement.children.length > 0)
+				event.srcElement.children[0].textContent = "mic_off";
+			else
+				event.srcElement.textContent = "mic_off"
 		} else {
 			speechRecognition.start();
 			isListening = true;
-			event.srcElement.textContent = "mic"
+			if (event.srcElement.children.length > 0)
+				event.srcElement.children[0].textContent = "mic";
+			else
+				event.srcElement.textContent = "mic"
 		}
 	};
 
@@ -77,12 +68,20 @@ if ("webkitSpeechRecognition" in window) {
 	document.querySelector("#translate").onclick = (event) => {
 		if (isFrench) {
 			speechRecognition.lang = 'en-US';
+			code = codeEn;
 			isFrench = false;
-			event.srcElement.textContent = "language_us"
+			if (event.srcElement.children.length > 0)
+				event.srcElement.children[0].textContent = "language_us";
+			else
+				event.srcElement.textContent = "language_us";
 		} else {
 			speechRecognition.lang = 'en-FR';
+			code = codeFr;
 			isFrench = true;
-			event.srcElement.textContent = "language_french"
+			if (event.srcElement.children.length > 0)
+				event.srcElement.children[0].textContent = "language_french";
+			else
+				event.srcElement.textContent = "language_french";
 		}
 	};
 
@@ -127,14 +126,14 @@ function checkCode(text) {
 		let isCodeCorrect = true;
 
 		for (let i = 0; i < words.length; i++) {
-			if (words[i].indexOf(code[i]) < 0) {
+			if (words[i].indexOf(code[i]) < 0)
 				isCodeCorrect = false;
-			}
 		}
 
 		if (isCodeCorrect) {
 			console.log("gg");
 			document.querySelector("#konami").style.opacity = "0";
+			document.querySelector("#canvas").style.opacity = "1";
 			final_transcript = "";
 		}
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import './Earth.css';
+import './styles/Earth.css';
 
 export default function Earth() {
 	React.useEffect(() => {

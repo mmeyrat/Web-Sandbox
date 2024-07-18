@@ -2,15 +2,27 @@
 
 @font-face {
 	font-family: "konami";
-	src: url("./KonSystem-YB8j.ttf") format("truetype");
+	src: url("../fonts/KonSystem-YB8j.ttf") format("truetype");
+}
+
+:root {
+	--bg-color: #EEE;
+}
+
+html {
+	overflow: hidden;
+}
+
+body {
+	background-color: var(--bg-color);
 }
 
 a {
 	all: unset;
 }
 
-:root {
-	--bg-color: #EEE;
+#canvas {
+	transition: opacity 1s ease-in;
 }
 
 #konami {
@@ -38,10 +50,6 @@ a {
 	overflow-y: auto;
 	height: 300px;
 	margin: 2%;
-}
-
-#status {
-	transition: opacity 0.3s ease-in;
 }
 
 #interim {
@@ -78,6 +86,14 @@ a {
 	font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
 }
 
+.falling-image {
+    position: absolute;
+    top: -300px;
+    animation: fall linear 5s infinite;
+	border-radius: 5px;
+	z-index: -1;
+}
+
 @keyframes fall {
     0% {
 		opacity: 1;
@@ -93,19 +109,6 @@ a {
         transform: translateY(1000px);
     }
 }
-
-.falling-image {
-    position: absolute;
-    top: -300px;
-    animation: fall linear 5s infinite;
-	border-radius: 5px;
-}
-
-
-body {
-	background-color: var(--bg-color);
-}
-
 
 @media screen and (max-width: 1000px) {
 	#konami {
@@ -132,8 +135,4 @@ body {
 	:root {
 		--bg-color: #222;
 	}
-}
-
-html {
-	overflow: hidden;
 }

@@ -1,21 +1,25 @@
 import React from 'react';
-import './Konami.css';
+import './styles/Konami.css';
 
 export default function Konami() {
 	let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 	React.useEffect(() => {
-		if (document.getElementsByClassName("speech").length === 0)
+		if (document.getElementsByClassName("scripts").length === 0)
 		{
-			const script = document.createElement("script");
-			script.className = "speech";
-			script.src = '/js/SpeechRecognition.js';
-			document.body.appendChild(script);
+			const scriptSpeech = document.createElement("script");
+			const scriptConfetti = document.createElement("script");
+			scriptSpeech.className = "scripts";
+			scriptConfetti.className = "scripts";
+			scriptSpeech.src = '/js/SpeechRecognition.js';
+			scriptConfetti.src = '/js/Confetti.js';
+			document.body.appendChild(scriptSpeech);
+			document.body.appendChild(scriptConfetti);
 		}
 
 		document.querySelectorAll('.falling-image').forEach((image, index) => {
 				image.style.animationDuration = `${Math.random() * 10 + 6}s`;
-				image.style.top = index % 2 ? "-600px" : "-300px";
+				image.style.top = index % 2 ? "-700px" : "-360px";
 
 				placeImage(image, index);
 
@@ -39,6 +43,7 @@ export default function Konami() {
 
 	return (
 		<div>
+			<canvas id="canvas" style={{opacity: 0}}></canvas>
 			<img className="falling-image" src="/images/KonamiCode/ko0.jpg" alt=""></img>
 			<img className="falling-image" src="/images/KonamiCode/ko1.jpg" alt=""></img>
 			<img className="falling-image" src="/images/KonamiCode/ko2.jpg" alt=""></img>
@@ -51,11 +56,11 @@ export default function Konami() {
 					<span id="interim" className="text-secondary"></span>
 				</div>
 				<div id="konami-bottom">
-					<div className="icon-container" id="listen"><i className="material-symbols-sharp">mic_off</i></div>
-					<div className="icon-container" id="delete"><i className="material-symbols-sharp ">backspace</i></div>
-					<div className="icon-container" id="reset"><i className="material-symbols-sharp">restart_alt</i></div>
-					<div className="icon-container" id="translate"><i className="material-symbols-sharp">language_french</i></div>
-					<a className="icon-container" href="https://en.wikipedia.org/wiki/Konami_Code" target="_blank" rel="noreferrer"><i className="material-symbols-sharp no-fill">info</i></a>
+					<div className="icon-container" title="Mute/Unmute" id="listen"><i className="material-symbols-sharp">mic_off</i></div>
+					<div className="icon-container" title="Remove last" id="delete"><i className="material-symbols-sharp ">backspace</i></div>
+					<div className="icon-container" title="Reset" id="reset"><i className="material-symbols-sharp">restart_alt</i></div>
+					<div className="icon-container" title="Language" id="translate"><i className="material-symbols-sharp">language_french</i></div>
+					<a className="icon-container" title="Info" href="https://en.wikipedia.org/wiki/Konami_Code" target="_blank" rel="noreferrer"><i className="material-symbols-sharp no-fill">info</i></a>
 				</div>
 			</div>
 		</div>

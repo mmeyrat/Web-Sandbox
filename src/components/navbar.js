@@ -1,5 +1,5 @@
 import React from 'react';
-import './Navbar.css';
+import './styles/Navbar.css';
 
 export default function Navbar({onValueSend}) {
 	const list = React.useRef(null);
