@@ -37,13 +37,15 @@ if ("webkitSpeechRecognition" in window) {
 		checkCode(final_transcript);
 	};
 
-	document.querySelector("#listen").onclick = (event) => {
-		if (isListening) {
-			speechRecognition.stop();
-			isListening = false;
-			if (event.srcElement.children.length > 0)
-				event.srcElement.children[0].textContent = "mic_off";
-			else
+	function setListeners() {
+
+		document.querySelector("#listen").onclick = (event) => {
+			if (isListening) {
+				speechRecognition.stop();
+				isListening = false;
+				if (event.srcElement.children.length > 0)
+					event.srcElement.children[0].textContent = "mic_off";
+				else
 				event.srcElement.textContent = "mic_off"
 		} else {
 			speechRecognition.start();
@@ -51,20 +53,21 @@ if ("webkitSpeechRecognition" in window) {
 			if (event.srcElement.children.length > 0)
 				event.srcElement.children[0].textContent = "mic";
 			else
-				event.srcElement.textContent = "mic"
-		}
-	};
+			event.srcElement.textContent = "mic"
+	}
+	console.log("ok");
+};
 
-	document.querySelector("#delete").onclick = () => {
-		final_transcript = final_transcript.substring(0, final_transcript.lastIndexOf(" "));
-		document.querySelector("#final").innerHTML = final_transcript;
+document.querySelector("#delete").onclick = () => {
+	final_transcript = final_transcript.substring(0, final_transcript.lastIndexOf(" "));
+	document.querySelector("#final").innerHTML = final_transcript;
+};
+
+document.querySelector("#reset").onclick = () => {
+	final_transcript = "";
+	document.querySelector("#final").innerHTML = final_transcript;
 	};
 	
-	document.querySelector("#reset").onclick = () => {
-		final_transcript = "";
-		document.querySelector("#final").innerHTML = final_transcript;
-	};
-
 	document.querySelector("#translate").onclick = (event) => {
 		if (isFrench) {
 			speechRecognition.lang = 'en-US';
@@ -73,17 +76,19 @@ if ("webkitSpeechRecognition" in window) {
 			if (event.srcElement.children.length > 0)
 				event.srcElement.children[0].textContent = "language_us";
 			else
-				event.srcElement.textContent = "language_us";
-		} else {
-			speechRecognition.lang = 'en-FR';
-			code = codeFr;
-			isFrench = true;
-			if (event.srcElement.children.length > 0)
-				event.srcElement.children[0].textContent = "language_french";
-			else
-				event.srcElement.textContent = "language_french";
-		}
-	};
+			event.srcElement.textContent = "language_us";
+	} else {
+		speechRecognition.lang = 'en-FR';
+		code = codeFr;
+		isFrench = true;
+		if (event.srcElement.children.length > 0)
+			event.srcElement.children[0].textContent = "language_french";
+		else
+		event.srcElement.textContent = "language_french";
+}
+};
+}
+setListeners();
 
 } else {
 	console.log("Speech Recognition Not Available");
@@ -138,3 +143,10 @@ function checkCode(text) {
 		}
 	}
 }
+
+let observer2 = new MutationObserver(mutation => {
+	if (document.getElementById("konami"))
+		setListeners();
+});
+
+observer2.observe(document.getElementById("App"), { childList: true });

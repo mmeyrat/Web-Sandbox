@@ -7,7 +7,7 @@ import './styles/App.css';
 function App() {
 	const [selectValue, setSelectValue] = React.useState(0);
 
-	const handleSelectValue = (value) => {
+	const handleSelectValue = (value) => {		
 		setSelectValue(value);
 	};
 

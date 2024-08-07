@@ -11,8 +11,8 @@ export default function Konami() {
 			const scriptConfetti = document.createElement("script");
 			scriptSpeech.className = "scripts";
 			scriptConfetti.className = "scripts";
-			scriptSpeech.src = '/js/SpeechRecognition.js';
-			scriptConfetti.src = '/js/Confetti.js';
+			scriptSpeech.src = "/sandbox/js/SpeechRecognition.js";
+			scriptConfetti.src = "/sandbox/js/Confetti.js";
 			document.body.appendChild(scriptSpeech);
 			document.body.appendChild(scriptConfetti);
 		}
@@ -38,18 +38,18 @@ export default function Konami() {
 
 		let column = window.screen.width / coef;
 		image.style.left = `${column * (index % coef) + Math.random() * (column - image.offsetWidth)}px`;
-		image.src = `/images/KonamiCode/ko${Math.floor(Math.random() * 20)}.jpg`;
+		image.src = `/sandbox/images/KonamiCode/ko${Math.floor(Math.random() * 20)}.jpg`;
 	}
 
 	return (
 		<div>
 			<canvas id="canvas" style={{opacity: 0}}></canvas>
-			<img className="falling-image" src="/images/KonamiCode/ko0.jpg" alt=""></img>
-			<img className="falling-image" src="/images/KonamiCode/ko1.jpg" alt=""></img>
-			<img className="falling-image" src="/images/KonamiCode/ko2.jpg" alt=""></img>
-			<img className="falling-image" src="/images/KonamiCode/ko3.jpg" alt=""></img>
-			<img className="falling-image" src="/images/KonamiCode/ko4.jpg" alt=""></img>
-			<img className="falling-image" src="/images/KonamiCode/ko5.jpg" alt=""></img>
+			<img className="falling-image" src="/sandbox/images/KonamiCode/ko0.jpg" alt=""></img>
+			<img className="falling-image" src="/sandbox/images/KonamiCode/ko1.jpg" alt=""></img>
+			<img className="falling-image" src="/sandbox/images/KonamiCode/ko2.jpg" alt=""></img>
+			<img className="falling-image" src="/sandbox/images/KonamiCode/ko3.jpg" alt=""></img>
+			<img className="falling-image" src="/sandbox/images/KonamiCode/ko4.jpg" alt=""></img>
+			<img className="falling-image" src="/sandbox/images/KonamiCode/ko5.jpg" alt=""></img>
 			<div id="konami">
 				<div id="konami-top">
 					<span id="final" className="text-light"></span>

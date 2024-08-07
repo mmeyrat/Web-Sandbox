@@ -11,11 +11,11 @@ export default function Earth() {
 		camera.position.z = 300;
 
 		const loader = new THREE.TextureLoader();
-		const earthColorTex = loader.load("/images/Earth3D/earth_color_map.jpg");
-		const earthSpecularTex = loader.load("/images/Earth3D/earth_specular_map.jpg");
-		const earthNormalTex = loader.load("/images/Earth3D/earth_normal_map.jpg");
-		const cloudsTex = loader.load("/images/Earth3D/earth_clouds.jpg");
-		const starsTex = loader.load("/images/Earth3D/stars.jpg");
+		const earthColorTex = loader.load("/sandbox/images/Earth3D/earth_color_map.jpg");
+		const earthSpecularTex = loader.load("/sandbox/images/Earth3D/earth_specular_map.jpg");
+		const earthNormalTex = loader.load("/sandbox/images/Earth3D/earth_normal_map.jpg");
+		const cloudsTex = loader.load("/sandbox/images/Earth3D/earth_clouds.jpg");
+		const starsTex = loader.load("/sandbox/images/Earth3D/stars.jpg");
 
 		const earthGeo = new THREE.SphereGeometry(128, 128, 128);
 		const cloudsGeo = new THREE.SphereGeometry(129, 128, 128);
