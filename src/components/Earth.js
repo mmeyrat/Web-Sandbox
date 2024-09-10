@@ -4,13 +4,25 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import './styles/Earth.css';
 
 export default function Earth() {
+	//let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 	React.useEffect(() => {
 		const scene = new THREE.Scene();
 
 		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000);
 		camera.position.z = 300;
 
-		const loader = new THREE.TextureLoader();
+		const manager = new THREE.LoadingManager();
+		manager.onProgress = (url, loaded, total) => {
+			let status = `${Math.round(loaded / total * 100)}%`;
+			document.getElementById("progresstext").textContent = status;
+			document.getElementById("progressbar-fg").style.width = status;
+
+			if (status === "100%")
+				document.getElementById("loading").style.visibility = "hidden";
+		}
+
+		const loader = new THREE.TextureLoader(manager);
 		const earthColorTex = loader.load("/sandbox/images/Earth3D/earth_color_map.jpg");
 		const earthSpecularTex = loader.load("/sandbox/images/Earth3D/earth_specular_map.jpg");
 		const earthNormalTex = loader.load("/sandbox/images/Earth3D/earth_normal_map.jpg");
@@ -94,6 +106,15 @@ export default function Earth() {
 	});
 
 	return (
-		<div id="earth"></div>
+		<div>
+			<div id="loading">
+				<div id="progressbar">
+					<div id="progressbar-bg"></div>
+					<div id="progressbar-fg"></div>
+				</div>
+				<span id="progresstext">0%</span>
+			</div>
+			<div id="earth"></div>
+		</div>
 	)
 }

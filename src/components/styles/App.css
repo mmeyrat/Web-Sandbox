@@ -2,14 +2,14 @@
     position: absolute;
     right: 40px;
     bottom: 40px;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background-color: #FFF;
     border-radius: 45px;
     padding: 7px;
     cursor: pointer;
     box-shadow: 0 0 10px 5px #AAA;
-    transition: transform 0.15s ease-in, box-shadow 0.15s , bottom 0.3s ease-in;
+    transition: transform 0.15s ease-in, box-shadow 0.15s ease-in;
 }
 
 .link:hover {
@@ -17,14 +17,9 @@
     box-shadow: 0 0 2px 2px #AAA;
 }
 
-@media screen and (max-height: 500px) {
+@media screen and ((max-width: 650px) or (max-height: 500px)) {
     .link {
 		bottom: 20px;
-    }
-}
-
-@media screen and ((max-width: 600px) or (max-height: 200px)) {
-    .link {
-        display: none;
+        right: 20px;
     }
 }

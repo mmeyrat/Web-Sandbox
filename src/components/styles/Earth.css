@@ -1,3 +1,41 @@
+#loading {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+}
+
+#progressbar {
+	position: fixed;
+	top: 47%;
+	left: calc(50% - 100px);
+	width: 200px;
+	height: 10px;
+}
+
+#progressbar-bg {
+	position: absolute;
+	background-color: #888;
+	width: 100%;
+	height: 100%;
+	border-radius: 45px;
+}
+
+#progressbar-fg {
+	position: absolute;
+	background-color: #FFF;
+	height: 100%;
+	border-radius: 45px;
+}
+
+#progresstext {
+	position: fixed;
+	top: 50%;
+	left: calc(50% - 17px);
+	color: #FFF;
+	font-weight: bold;
+}
+
 #earth {
 	cursor: grab;
 }
