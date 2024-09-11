@@ -10,7 +10,7 @@ export default function Earth() {
 		const scene = new THREE.Scene();
 
 		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000);
-		camera.position.z = 300;
+		camera.position.z = window.innerWidth > 600 ? 300 : 450;
 
 		const manager = new THREE.LoadingManager();
 		manager.onProgress = (url, loaded, total) => {

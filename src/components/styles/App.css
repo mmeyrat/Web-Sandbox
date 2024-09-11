@@ -1,3 +1,12 @@
+@font-face {
+	font-family: "tommy";
+	src: url("../fonts/Tommy-Regular.otf") format("opentype");
+}
+
+body {
+    font-family: tommy;
+}
+
 .link {
     position: absolute;
     right: 40px;
