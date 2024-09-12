@@ -54,10 +54,12 @@ function Draw() {
 }
 
 window.addEventListener("resize", () => {
-	width = window.innerWidth;
-	height = window.innerHeight;
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	if (canvas) {
+		width = window.innerWidth;
+		height = window.innerHeight;
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	}
 });
 
 for (let i = 0; i < maxConfettiNb; i++)

@@ -40,55 +40,54 @@ if ("webkitSpeechRecognition" in window) {
 	function setListeners() {
 
 		document.querySelector("#listen").onclick = (event) => {
+			let parent = event.srcElement.closest("#listen");
+			
 			if (isListening) {
 				speechRecognition.stop();
 				isListening = false;
-				if (event.srcElement.children.length > 0)
-					event.srcElement.children[0].textContent = "mic_off";
-				else
-				event.srcElement.textContent = "mic_off"
-		} else {
-			speechRecognition.start();
-			isListening = true;
-			if (event.srcElement.children.length > 0)
-				event.srcElement.children[0].textContent = "mic";
-			else
-			event.srcElement.textContent = "mic"
-	}
-	console.log("ok");
-};
+				
+				parent.children[0].style.display = "unset";
+				parent.children[1].style.display = "none";
+			} else {
+				speechRecognition.start();
+				isListening = true;
+				
+				parent.children[0].style.display = "none";
+				parent.children[1].style.display = "unset";
+			}
+		};
 
-document.querySelector("#delete").onclick = () => {
-	final_transcript = final_transcript.substring(0, final_transcript.lastIndexOf(" "));
-	document.querySelector("#final").innerHTML = final_transcript;
-};
+		document.querySelector("#delete").onclick = () => {
+			final_transcript = final_transcript.substring(0, final_transcript.lastIndexOf(" "));
+			document.querySelector("#final").innerHTML = final_transcript;
+		};
 
-document.querySelector("#reset").onclick = () => {
-	final_transcript = "";
-	document.querySelector("#final").innerHTML = final_transcript;
-	};
+		document.querySelector("#reset").onclick = () => {
+			final_transcript = "";
+			document.querySelector("#final").innerHTML = final_transcript;
+		};
 	
-	document.querySelector("#translate").onclick = (event) => {
-		if (isFrench) {
-			speechRecognition.lang = 'en-US';
-			code = codeEn;
-			isFrench = false;
-			if (event.srcElement.children.length > 0)
-				event.srcElement.children[0].textContent = "language_us";
-			else
-			event.srcElement.textContent = "language_us";
-	} else {
-		speechRecognition.lang = 'en-FR';
-		code = codeFr;
-		isFrench = true;
-		if (event.srcElement.children.length > 0)
-			event.srcElement.children[0].textContent = "language_french";
-		else
-		event.srcElement.textContent = "language_french";
-}
-};
-}
-setListeners();
+		document.querySelector("#translate").onclick = (event) => {
+			let parent = event.srcElement.closest("#translate");
+
+			if (isFrench) {
+				speechRecognition.lang = 'en-US';
+				code = codeEn;
+				isFrench = false;
+				
+				parent.children[0].style.display = "none";
+				parent.children[1].style.display = "unset";
+			} else {
+				speechRecognition.lang = 'en-FR';
+				code = codeFr;
+				isFrench = true;
+
+				parent.children[0].style.display = "unset";
+				parent.children[1].style.display = "none";
+			}
+		};
+	}
+	setListeners();
 
 } else {
 	console.log("Speech Recognition Not Available");

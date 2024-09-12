@@ -7,6 +7,8 @@
 
 :root {
 	--bg-color: #EEE;
+	--pos-distance: 200px;
+	--neg-distance: -200px;
 }
 
 html {
@@ -34,7 +36,7 @@ a {
 	color: white;
 	width: 40%;
 	left: calc(30% - 30px);
-	top: calc(50% - 275px);
+	top: calc(50% - 250px);
 	box-shadow: 0px 0px 8px 2px #000000;
 	padding: 30px;
 	padding-bottom: 15px;
@@ -86,28 +88,62 @@ a {
 	font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
 }
 
-.falling-image {
-    position: absolute;
-    top: -300px;
-    animation: fall linear 5s infinite;
+.symbol {
+	user-select: none;
+	fill: #FFF;
+	margin: 8px;
+	width: 30px;
+	height: 30px;
+}
+
+.moving-image {
+    position: fixed;
 	border-radius: 5px;
 	z-index: -1;
 }
 
-@keyframes fall {
-    0% {
-		opacity: 1;
-        transform: translateY(0px);
-    }
+.move-bottom-right {
+    animation: moveBottomRight linear 5s infinite;
+}
 
-    90% {
-		opacity: 1;
-    }
+.move-top-left {
+    animation: moveTopLeft linear 5s infinite;
+}
 
-    100% {
-		opacity: 0;
-        transform: translateY(1000px);
-    }
+.move-bottom-left {
+    animation: moveBottomLeft linear 5s infinite;
+}
+
+.move-top-right {
+    animation: moveTopRight linear 5s infinite;
+}
+
+@keyframes moveBottomRight {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--pos-distance), var(--pos-distance)); }
+}
+
+@keyframes moveTopLeft {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--neg-distance), var(--neg-distance)); }
+}
+
+@keyframes moveBottomLeft {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--pos-distance), var(--neg-distance)); }
+}
+
+@keyframes moveTopRight {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--neg-distance), var(--pos-distance)); }
 }
 
 @media screen and (max-width: 1000px) {
