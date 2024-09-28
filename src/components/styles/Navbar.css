@@ -1,76 +1,98 @@
-#navbar {
-	position: fixed;
-	bottom: 40px;
-	left: calc(50% - 175px);
-	background-color: #444;
+.menu {
+	background-color: var(--menu-color);
 	border-radius: 15px;
-	width: 340px;
-	font-weight: bold;
+    bottom: 40px;
+	box-shadow: 0 0 10px 0 var(--menu-color);
+	position: fixed;
+}
+
+#navbar {
 	font-size: 20px;
-	color: white;
-	box-shadow: 0 0 10px 0 #444;
+	font-weight: bold;
+	left: calc(50% - 175px);
+	width: 340px;
 }
 
 #navbar ul {
 	display: flex;
-	list-style-type: none;
-	padding: 0;
-	margin: 8px;
 	justify-content: space-around;
+	list-style-type: none;
+	margin: 8px;
+	padding: 0;
 }
 
 #navbar li {
-	width: 140px;
-	padding: 5px;
-	text-align: center;
 	border-radius: 10px;
 	cursor: pointer;
+	padding: 5px;
+	text-align: center;
 	transition: background-color 0.3s;
+	width: 140px;
 }
 
 #selected {
-	background-color: #948ADA;
+	background-color: var(--menu-select-color);
 }
 
 #navbar li:not(#selected):hover {
-	background-color: #555;
+	background-color: var(--menu-hover-color);
 }
 
-#burger {
-	fill: #FFF;
-	visibility: hidden;
-    position: fixed;
-    left: 40px;
-    bottom: 40px;
-    width: 40px;
-    height: 40px;
-    background-color: #444;
-    border-radius: 15px;
-    padding: 8px;
+#folder {
     cursor: pointer;
-	box-shadow: 0 0 10px 0 #444;
+	fill: var(--menu-text-color);
+    height: 40px;
+    left: 40px;
+    padding: 8px;
+	visibility: hidden;
+    width: 40px;
+}
+
+#link {
+    background-color: var(--link-color);
+    border-radius: 45px;
+    bottom: 40px;
+    box-shadow: 0 0 10px 5px var(--link-shadow-color);
+    cursor: pointer;
+    height: 44px;
+    padding: 7px;
+    position: fixed;
+    right: 40px;
+    transition: transform 0.15s ease-in, box-shadow 0.15s ease-in;
+    width: 44px;
+}
+
+#link:hover {
+    box-shadow: 0 0 2px 2px var(--link-shadow-color);
+    transform: scale(1.2);
 }
 
 @media screen and ((max-width: 650px) or (max-height: 500px)) {
-	#burger {
-		left: 20px;
+
+	#folder {
 		bottom: 20px;
+		left: 20px;
 		visibility: visible;
 	}
 
 	#navbar {
-		width: 175px;
-		left: 20px;
 		bottom: 85px;
+		left: 20px;
 		visibility: hidden;
+		width: 175px;
 	}
 
     #navbar ul {
-		flex-direction: column;
 		align-items: center;
+		flex-direction: column;
 	}
 	
 	#navbar li:not(:first-child) {
 		margin-top: 8px;
 	}
+
+    #link {
+		bottom: 20px;
+        right: 20px;
+    }
 }

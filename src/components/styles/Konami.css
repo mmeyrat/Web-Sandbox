@@ -1,104 +1,62 @@
-@import "https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200";
-
-@font-face {
-	font-family: "konami";
-	src: url("../fonts/KonSystem-YB8j.ttf") format("truetype");
-}
-
-:root {
-	--bg-color: #EEE;
-	--pos-distance: 200px;
-	--neg-distance: -200px;
-}
-
-html {
-	overflow: hidden;
-}
-
-body {
-	background-color: var(--bg-color);
-}
-
-a {
-	all: unset;
-}
-
 #canvas {
 	transition: opacity 1s ease-in;
 }
 
 #konami {
-	position: fixed;
+	background-color: var(--konami-main-color);
+	border-radius: 5px;
+	box-shadow: 0px 0px 8px 2px var(--konami-shadow-color);
 	display: flex;
 	flex-flow: column;
-	justify-content: space-between;
-	background-color: #AD0012;
-	color: white;
-	width: 40%;
-	left: calc(30% - 30px);
-	top: calc(50% - 250px);
-	box-shadow: 0px 0px 8px 2px #000000;
-	padding: 30px;
-	padding-bottom: 15px;
 	font-family: konami;
 	font-size: 30px;
+	justify-content: space-between;
+	left: calc(30% - 30px);
+	padding: 30px;
+	padding-bottom: 15px;
+	position: fixed;
+	top: calc(50% - 250px);
 	transition: opacity 0.5s ease-in;
-	border-radius: 5px;
+	width: 40%;
 }
 
 #konami-top {
-	box-shadow: 0px 0px 10px 5px #920413;
-	background-color: #920413;
-	overflow-y: auto;
+	background-color: var(--konami-dark-color);
+	box-shadow: 0px 0px 10px 5px var(--konami-dark-color);
 	height: 300px;
 	margin: 2%;
+	overflow-y: auto;
 }
 
 #interim {
-	color: #BBB;
+	color: var(--konami-interim-color);
 }
 
 #konami-bottom {
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 6px;
 }
 
 .icon-container {
-	margin: 2px;
-	cursor: pointer;
 	border-radius: 5px;
-	transition: background-color 0.2s ease-in;
+	cursor: pointer;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	fill: var(--menu-text-color);
+	height: 30px;
+	margin: 2px;
+	padding: 8px;
+	transition: background-color 0.2s ease-in;
+	width: 30px;
 }
 
 .icon-container:hover {
-	background-color: #920413;
-}
-
-.material-symbols-sharp { 
-	user-select: none;
-	margin: 8px;
-	font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
-	font-size: 30px;
-}
-
-.no-fill {
-	font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
-}
-
-.symbol {
-	user-select: none;
-	fill: #FFF;
-	margin: 8px;
-	width: 30px;
-	height: 30px;
+	background-color: var(--konami-dark-color);
 }
 
 .moving-image {
-    position: fixed;
 	border-radius: 5px;
+    position: fixed;
 	z-index: -1;
 }
 
@@ -122,53 +80,45 @@ a {
     0% { opacity: 0; }
     20% { opacity: 1; }
     80% { opacity: 1; }
-    100% { opacity: 0; transform: translate(var(--pos-distance), var(--pos-distance)); }
+    100% { opacity: 0; transform: translate(var(--anim-pos-distance), var(--anim-pos-distance)); }
 }
 
 @keyframes moveTopLeft {
     0% { opacity: 0; }
     20% { opacity: 1; }
     80% { opacity: 1; }
-    100% { opacity: 0; transform: translate(var(--neg-distance), var(--neg-distance)); }
+    100% { opacity: 0; transform: translate(var(--anim-neg-distance), var(--anim-neg-distance)); }
 }
 
 @keyframes moveBottomLeft {
     0% { opacity: 0; }
     20% { opacity: 1; }
     80% { opacity: 1; }
-    100% { opacity: 0; transform: translate(var(--pos-distance), var(--neg-distance)); }
+    100% { opacity: 0; transform: translate(var(--anim-pos-distance), var(--anim-neg-distance)); }
 }
 
 @keyframes moveTopRight {
     0% { opacity: 0; }
     20% { opacity: 1; }
     80% { opacity: 1; }
-    100% { opacity: 0; transform: translate(var(--neg-distance), var(--pos-distance)); }
+    100% { opacity: 0; transform: translate(var(--anim-neg-distance), var(--anim-pos-distance)); }
 }
 
 @media screen and (max-width: 1000px) {
+
 	#konami {
 		width: 70%;
 		left: calc(15% - 30px);
 	}
-
-	#konami-bottom {
-		margin-bottom: 4%;
-	}
 }
 
 @media screen and (max-height: 500px) {
+
 	#konami {
-		top: calc(50% - 150px);
+		top: calc(50% - 125px);
 	}
 
 	#konami-top {
 		height: 100px;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--bg-color: #222;
 	}
 }

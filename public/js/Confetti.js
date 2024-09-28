@@ -69,7 +69,7 @@ canvas.width = width;
 canvas.height = height;
 Draw();
 
-let observer = new MutationObserver(mutation => {
+let confettiObserver = new MutationObserver(mutation => {
 	canvas = document.getElementById("canvas");
 
 	if (canvas) {
@@ -79,4 +79,4 @@ let observer = new MutationObserver(mutation => {
 	}
 });
 
-observer.observe(document.getElementById("App"), { childList: true });
+confettiObserver.observe(document.getElementById("App"), { childList: true });

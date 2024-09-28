@@ -3,20 +3,23 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import './styles/Earth.css';
 
-export default function Earth() {
-	//let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const earthSize = 128;
+const cloudsOffset = 0.5;
+const lightDist = 500;
+const lightColor = 0xFFFFFF;
 
+export default function Earth() {
 	React.useEffect(() => {
 		const scene = new THREE.Scene();
 
 		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000);
-		camera.position.z = window.innerWidth > 600 ? 300 : 450;
+		camera.position.z = window.innerWidth > 600 ? 300 : 450; // Change camera startup position depending on the screen size 
 
-		const manager = new THREE.LoadingManager();
+		const manager = new THREE.LoadingManager(); // Display progress bar while textures are loading
 		manager.onProgress = (url, loaded, total) => {
 			let status = `${Math.round(loaded / total * 100)}%`;
-			document.getElementById("progresstext").textContent = status;
-			document.getElementById("progressbar-fg").style.width = status;
+			document.getElementById("progress-text").textContent = status;
+			document.getElementById("progress-bar-fg").style.width = status;
 
 			if (status === "100%")
 				document.getElementById("loading").style.visibility = "hidden";
@@ -29,8 +32,8 @@ export default function Earth() {
 		const cloudsTex = loader.load("/sandbox/images/Earth3D/earth_clouds.jpg");
 		const starsTex = loader.load("/sandbox/images/Earth3D/stars.jpg");
 
-		const earthGeo = new THREE.SphereGeometry(128, 128, 128);
-		const cloudsGeo = new THREE.SphereGeometry(129, 128, 128);
+		const earthGeo = new THREE.SphereGeometry(earthSize, earthSize, earthSize);
+		const cloudsGeo = new THREE.SphereGeometry(earthSize + cloudsOffset, earthSize, earthSize);
 		const starsGeo = new THREE.SphereGeometry(40000, 25, 25);
 
 		const cloudsMat = new THREE.MeshPhongMaterial({ 
@@ -55,9 +58,9 @@ export default function Earth() {
 		stars.material.side = THREE.BackSide;
 		earth.rotation.x = 0.2;
 
-		const ambient = new THREE.AmbientLight(0xffffff, 0.2);
-		const light = new THREE.DirectionalLight(0xffffff, 5);
-		light.position.set(500, 500, 500);
+		const ambient = new THREE.AmbientLight(lightColor, 0.2);
+		const light = new THREE.DirectionalLight(lightColor, 5);
+		light.position.set(lightDist, lightDist, lightDist);
 
 		pivot.add(camera);
 		scene.add(earth, clouds, stars, ambient, light, pivot);
@@ -81,7 +84,7 @@ export default function Earth() {
 			clouds.rotation.x += 0.00002;
 			
 			let zoom = Math.round(controls.target.distanceTo(controls.object.position));
-			controls.rotateSpeed = Math.log(0.001 * zoom, 2.5) + 2;
+			controls.rotateSpeed = Math.log(0.001 * zoom, 2.5) + 2; // Adapt rotation speed to camera distance
 			controls.update();
 
 			camera.aspect = window.innerWidth / window.innerHeight;
@@ -108,11 +111,11 @@ export default function Earth() {
 	return (
 		<div>
 			<div id="loading">
-				<div id="progressbar">
-					<div id="progressbar-bg"></div>
-					<div id="progressbar-fg"></div>
+				<div id="progress-container">
+					<div id="progress-bar-bg" className="progress-bar"></div>
+					<div id="progress-bar-fg" className="progress-bar"></div>
 				</div>
-				<span id="progresstext">0%</span>
+				<span id="progress-text">0%</span>
 			</div>
 			<div id="earth"></div>
 		</div>

@@ -3,32 +3,43 @@
 	src: url("../fonts/Tommy-Regular.otf") format("opentype");
 }
 
+@font-face {
+	font-family: "konami";
+	src: url("../fonts/KonSystem-Regular.ttf") format("truetype");
+}
+
+:root {
+    --konami-dark-color: #920413;
+    --konami-main-color: #AD0012;
+    --konami-shadow-color: #000;
+    --konami-interim-color: #BBB;
+    --link-color: #FFF;
+    --link-shadow-color: #AAA;
+    --loading-bg-color: #000;
+    --loading-bar-bg-color: #888;
+    --menu-color: #444;
+    --menu-hover-color: #555;
+    --menu-select-color: #948ADA;
+    --menu-text-color: #FFF;
+    --page-bg-color: #FFF;
+
+	--anim-pos-distance: 200px;
+	--anim-neg-distance: -200px;
+}
+
+html {
+	color: var(--menu-text-color);
+	overflow: hidden;
+}
+
 body {
+    background-color: var(--page-bg-color);
     font-family: tommy;
 }
 
-.link {
-    position: absolute;
-    right: 40px;
-    bottom: 40px;
-    width: 44px;
-    height: 44px;
-    background-color: #FFF;
-    border-radius: 45px;
-    padding: 7px;
-    cursor: pointer;
-    box-shadow: 0 0 10px 5px #AAA;
-    transition: transform 0.15s ease-in, box-shadow 0.15s ease-in;
-}
+@media (prefers-color-scheme: dark) {
 
-.link:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 2px 2px #AAA;
-}
-
-@media screen and ((max-width: 650px) or (max-height: 500px)) {
-    .link {
-		bottom: 20px;
-        right: 20px;
-    }
+	:root {
+		--page-bg-color: #000;
+	}
 }

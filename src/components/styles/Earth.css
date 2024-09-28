@@ -1,39 +1,38 @@
 #loading {
+	background-color: var(--loading-bg-color);
+	height: 100%;
 	position: fixed;
 	width: 100%;
-	height: 100%;
-	background-color: #000;
 }
 
-#progressbar {
-	position: fixed;
-	top: 47%;
-	left: calc(50% - 100px);
-	width: 200px;
+#progress-container {
 	height: 10px;
-}
-
-#progressbar-bg {
-	position: absolute;
-	background-color: #888;
-	width: 100%;
-	height: 100%;
-	border-radius: 45px;
-}
-
-#progressbar-fg {
-	position: absolute;
-	background-color: #FFF;
-	height: 100%;
-	border-radius: 45px;
-}
-
-#progresstext {
+	left: calc(50% - 100px);
 	position: fixed;
-	top: 50%;
-	left: calc(50% - 17px);
-	color: #FFF;
+	top: 45%;
+	width: 200px;
+}
+
+.progress-bar {
+	border-radius: 45px;
+	height: 100%;
+	position: absolute;
+}
+
+#progress-bar-bg {
+	background-color: var(--loading-bar-bg-color);
+	width: 100%;
+}
+
+#progress-bar-fg {
+	background-color: var(--menu-text-color);
+}
+
+#progress-text {
 	font-weight: bold;
+	left: calc(50% - 17px);
+	position: fixed;
+	top: calc(45% + 20px);
 }
 
 #earth {
